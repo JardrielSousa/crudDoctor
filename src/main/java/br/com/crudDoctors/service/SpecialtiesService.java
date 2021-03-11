@@ -23,7 +23,7 @@ public class SpecialtiesService {
 	public Page<Specialties> getAllSpecialities(Pageable pageable) {
 		return specialitiesRepository.findAll(pageable);
 	}
-
+	
 	public Optional<Specialties> getSpecialtiesbyId(Long id) {
 		Specialties specialties = specialtiesExists(id);
 		return Optional.of(specialties);

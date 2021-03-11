@@ -1,4 +1,5 @@
 package br.com.crudDoctors.service;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -25,6 +26,11 @@ public class DoctorService {
 	public Page<Doctor> getAllDoctors(Pageable pageable){
 		return doctorRepository.findAll(pageable);
 	}
+	
+	public List<Doctor> getAllDoctorsForSpecialties(String name, Pageable pageable){
+		return doctorRepository.getAllDoctorsForSpecialties(name);
+	}
+	
 	public Optional<Doctor> getDoctorbyId(Long id){
 		Doctor doctor = doctorExists(id);
 		return Optional.of(doctor) ;

@@ -1,5 +1,6 @@
 package br.com.crudDoctors.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -40,6 +41,12 @@ public class CrudDoctorsController {
 		return ResponseEntity.status(HttpStatus.OK).body(doctors);
 	}
 
+	@GetMapping("specialties/{name}")
+	public ResponseEntity<List<Doctor>> getAllDoctorsForSpecialties(@PathVariable("name") String name, Pageable pageable) throws Exception {
+		List<Doctor> doctors = doctorService.getAllDoctorsForSpecialties(name,pageable);
+		return ResponseEntity.status(HttpStatus.OK).body(doctors);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Doctor>> getDoctorById(@PathVariable("id") Long id) throws Exception {
 		Optional<Doctor> doctor = doctorService.getDoctorbyId(id);

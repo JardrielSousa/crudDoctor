@@ -45,7 +45,7 @@ public class CrudSpecialtiesController {
 		Optional<Specialties> specialties = specialtiesService.getSpecialtiesbyId(id);
 		return ResponseEntity.status(HttpStatus.OK).body(specialties);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<?> insertSpecialities(@Valid @RequestBody SpecialtiesVO specialtiesVO) {
 		Specialties specialties = new Specialties().setToEntity(specialtiesVO);
