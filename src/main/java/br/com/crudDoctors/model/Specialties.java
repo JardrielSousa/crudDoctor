@@ -48,6 +48,7 @@ public class Specialties {
 		Specialties newSpecialties;
 		newSpecialties = spe.get();
 		newSpecialties.setId(specialtiesVO.getId());
+		newSpecialties.setName(specialtiesVO.getName());
 		newSpecialties.setDescription(specialtiesVO.getDescription());
 		newSpecialties.setActive(specialtiesVO.getActive());
 		newSpecialties.setDoctor(new Doctor(specialtiesVO.getDoctorId()));
