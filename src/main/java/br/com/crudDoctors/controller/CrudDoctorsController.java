@@ -42,8 +42,8 @@ public class CrudDoctorsController {
 	}
 
 	@GetMapping("specialties/{name}")
-	public ResponseEntity<List<Doctor>> getAllDoctorsForSpecialties(@PathVariable("name") String name, Pageable pageable) throws Exception {
-		List<Doctor> doctors = doctorService.getAllDoctorsForSpecialties(name,pageable);
+	public ResponseEntity<List<Doctor>> getAllDoctorsForSpecialties(@PathVariable("name") String name) throws Exception {
+		List<Doctor> doctors = doctorService.getAllDoctorsForSpecialties(name);
 		return ResponseEntity.status(HttpStatus.OK).body(doctors);
 	}
 	

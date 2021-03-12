@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,9 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import br.com.crudDoctors.vo.DoctorVO;
 import lombok.AllArgsConstructor;
@@ -33,8 +29,7 @@ public class Doctor {
 	private String name;
 	private Date birthDate;
 	private Boolean active;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "doctor")
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@OneToMany(targetEntity=Specialties.class, mappedBy="doctor", fetch = FetchType.EAGER)
 	@Transient
 	private Set<Specialties> specialties = new HashSet<Specialties>();
 

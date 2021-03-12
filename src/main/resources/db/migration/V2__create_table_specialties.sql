@@ -6,5 +6,5 @@ CREATE TABLE specialties (
   description VARCHAR(250) NOT NULL,
   active BOOLEAN DEFAULT true,
   doctor_id int not null,
-  CONSTRAINT doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor (id)
+  FOREIGN KEY (doctor_id) REFERENCES doctor (id) ON DELETE CASCADE
 );

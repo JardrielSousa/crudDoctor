@@ -2,17 +2,14 @@ package br.com.crudDoctors.model;
 
 import java.util.Optional;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import br.com.crudDoctors.vo.SpecialtiesVO;
 import lombok.AllArgsConstructor;
@@ -30,10 +27,9 @@ public class Specialties {
 	private String name;
 	private String description;
 	private boolean active;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "doctor_id", nullable = false)
-    private Doctor doctor;
+	@ManyToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctor;
 
 	public Specialties(Long id) {
 		Id = id;

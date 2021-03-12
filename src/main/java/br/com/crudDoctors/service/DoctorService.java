@@ -16,18 +16,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service 
 public class DoctorService {
-	
+
+	private DoctorRepository doctorRepository;
+
 	public DoctorService(DoctorRepository doctorRepository) {
 		this.doctorRepository = doctorRepository;
 	}
-
-	private DoctorRepository doctorRepository;
 
 	public Page<Doctor> getAllDoctors(Pageable pageable){
 		return doctorRepository.findAll(pageable);
 	}
 	
-	public List<Doctor> getAllDoctorsForSpecialties(String name, Pageable pageable){
+	public List<Doctor> getAllDoctorsForSpecialties(String name){
 		return doctorRepository.getAllDoctorsForSpecialties(name);
 	}
 	
@@ -45,7 +45,7 @@ public class DoctorService {
 	@Transactional
 	public void deleteDoctor(Long id) {
 		doctorExists(id);
-		doctorRepository.deleteById(id);
+		doctorRepository.deleteDoctorById(id);
 	}
 	
 	private Doctor doctorExists(Long id) {
